@@ -1,25 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://k4ubtiu1kd2u"]
+[gd_scene load_steps=7 format=3 uid="uid://k4ubtiu1kd2u"]
 
-[ext_resource type="PackedScene" uid="uid://c8k5y7vskew2v" path="res://levels/gm_bigcity/assets/bigcitymain00.glb" id="1_k1062"]
-[ext_resource type="PackedScene" uid="uid://0ovuy5unf00t" path="res://levels/gm_bigcity/assets/bigcitymain01.glb" id="2_0xsxi"]
-[ext_resource type="PackedScene" uid="uid://cfg5ee6g3uyif" path="res://levels/gm_bigcity/assets/bigcitymain02.glb" id="3_pgdqr"]
-[ext_resource type="PackedScene" uid="uid://ps7ou3joft47" path="res://levels/gm_bigcity/assets/bigcitymain03.glb" id="4_7jfvw"]
-[ext_resource type="PackedScene" uid="uid://bd3p4gxfu8ton" path="res://levels/gm_bigcity/assets/bigcitymain04.glb" id="5_mpftm"]
-[ext_resource type="PackedScene" uid="uid://4ool0nn7ynrj" path="res://levels/gm_bigcity/assets/bigcitybg01.glb" id="6_k23nd"]
-[ext_resource type="PackedScene" uid="uid://c56es4sgs0eut" path="res://levels/gm_bigcity/assets/bigcitybg02.glb" id="7_atm8o"]
+[ext_resource type="PackedScene" uid="uid://dmsxt8achsbmt" path="res://levels/gm_bigcity/scenes/bigcitybg_01.tscn" id="1_gf6el"]
+[ext_resource type="PackedScene" uid="uid://ctw4pir3uvhug" path="res://levels/gm_bigcity/scenes/bigcitymain_00.tscn" id="2_sx281"]
+[ext_resource type="PackedScene" uid="uid://bcqm2gsidi6je" path="res://levels/gm_bigcity/scenes/bigcitymain_01.tscn" id="3_4pgdi"]
+[ext_resource type="PackedScene" uid="uid://baasoimbpfjgw" path="res://levels/gm_bigcity/scenes/bigcitymain_02.tscn" id="4_6to3f"]
+[ext_resource type="PackedScene" uid="uid://bcnafgcbw2ihr" path="res://levels/gm_bigcity/scenes/bigcitymain_03.tscn" id="5_6omsl"]
+[ext_resource type="PackedScene" uid="uid://21lp0pkxexvb" path="res://levels/gm_bigcity/scenes/bigcitymain_04.tscn" id="6_gv8c4"]
 
 [node name="gm_bigcity" type="Node3D"]
 
-[node name="bigcitymain00" parent="." instance=ExtResource("1_k1062")]
+[node name="bigcitybg01" parent="." instance=ExtResource("1_gf6el")]
 
-[node name="bigcitymain01" parent="." instance=ExtResource("2_0xsxi")]
+[node name="bigcitymain00" parent="." instance=ExtResource("2_sx281")]
 
-[node name="bigcitymain02" parent="." instance=ExtResource("3_pgdqr")]
+[node name="bigcitymain01" parent="." instance=ExtResource("3_4pgdi")]
 
-[node name="bigcitymain03" parent="." instance=ExtResource("4_7jfvw")]
+[node name="bigcitymain02" parent="." instance=ExtResource("4_6to3f")]
 
-[node name="bigcitymain04" parent="." instance=ExtResource("5_mpftm")]
+[node name="bigcitymain03" parent="." instance=ExtResource("5_6omsl")]
 
-[node name="bigcitybg01" parent="." instance=ExtResource("6_k23nd")]
-
-[node name="bigcitybg02" parent="." instance=ExtResource("7_atm8o")]
+[node name="bigcitymain04" parent="." instance=ExtResource("6_gv8c4")]

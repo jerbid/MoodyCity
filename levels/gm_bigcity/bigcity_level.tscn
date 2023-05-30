@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjilv17e4pqd7"]
+
+[ext_resource type="PackedScene" uid="uid://k4ubtiu1kd2u" path="res://levels/gm_bigcity/scenes/gm_bigcity.tscn" id="1_ksy8i"]
+[ext_resource type="PackedScene" uid="uid://cklyv3tfoq8xw" path="res://player_car/scenes/Player.tscn" id="2_ps4n8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fb7gb"]
+sky_top_color = Color(0.270588, 0.454902, 0.682353, 1)
+
+[sub_resource type="Sky" id="Sky_plh5c"]
+sky_material = SubResource("ProceduralSkyMaterial_fb7gb")
+
+[sub_resource type="Environment" id="Environment_ookax"]
+background_mode = 2
+sky = SubResource("Sky_plh5c")
+
+[node name="bigcity_level" type="Node3D"]
+
+[node name="gm_bigcity" parent="." instance=ExtResource("1_ksy8i")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ookax")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.736935, 0.32695, -0.591634, -6.74616e-09, 0.875245, 0.483679, 0.675964, 0.35644, -0.644999, -181.416, 4.09422, -134.663)
+shadow_enabled = true
+
+[node name="Moody" parent="." instance=ExtResource("2_ps4n8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.679, 0, -137.623)

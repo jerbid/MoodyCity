@@ -1,0 +1,2 @@
+extends VehicleBody3D
+

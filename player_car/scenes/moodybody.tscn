@@ -4,11 +4,13 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dloeo"]
 transparency = 1
+cull_mode = 2
 albedo_color = Color(0.309804, 0.309804, 0.309804, 0.933333)
 metallic = 1.0
 roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydua1"]
+cull_mode = 2
 albedo_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36u68"]
@@ -21,9 +23,11 @@ emission_enabled = true
 emission = Color(0.458824, 0.458824, 0.458824, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nclwq"]
+cull_mode = 2
 albedo_color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ynij"]
+cull_mode = 2
 metallic = 1.0
 roughness = 0.2
 
@@ -34,11 +38,13 @@ roughness = 0.54
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj201"]
 transparency = 1
+cull_mode = 2
 albedo_color = Color(1, 1, 1, 0.254902)
 metallic = 1.0
 roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecwnv"]
+cull_mode = 2
 albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e3sg"]
@@ -51,6 +57,7 @@ metallic = 1.0
 roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53j6x"]
+cull_mode = 2
 albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcvtu"]
