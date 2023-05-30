@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcvx4nr2dm23t"]
+
+[ext_resource type="PackedScene" uid="uid://dgxyotekdtcfh" path="res://player_car/assets/moodyLwheel.glb" id="1_myjf6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idtc8"]
+albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+metallic = 1.0
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdo1l"]
+albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="equinoxrLFwheel" instance=ExtResource("1_myjf6")]
+
+[node name="ExteriorBody" parent="." index="0"]
+visible = false
+
+[node name="WheelLR" parent="." index="1"]
+visible = false
+
+[node name="WheelRR" parent="." index="2"]
+visible = false
+
+[node name="WheelLF" parent="." index="3"]
+transform = Transform3D(0.00576121, 0, 0.00817364, 0, 0.01, 0, -0.00817364, 0, 0.00576121, 0.0364456, 0.367405, 0.00127637)
+
+[node name="sub011002" parent="WheelLF" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_idtc8")
+
+[node name="TireLR002" parent="WheelLF/sub011002" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fdo1l")
+
+[node name="sub021002" parent="WheelLF" index="1"]
+visible = false
+
+[node name="WheelRF" parent="." index="4"]
+visible = false

@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=3 uid="uid://bcx41l64n5b10"]
+
+[ext_resource type="PackedScene" uid="uid://bwm6bllx5vtpl" path="res://player_car/assets/moodybody.glb" id="1_d4a87"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dloeo"]
+transparency = 1
+albedo_color = Color(0.309804, 0.309804, 0.309804, 0.933333)
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydua1"]
+albedo_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36u68"]
+albedo_color = Color(1, 0.462745, 0.392157, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln7wh"]
+emission_enabled = true
+emission = Color(0.458824, 0.458824, 0.458824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nclwq"]
+albedo_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ynij"]
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysxf3"]
+albedo_color = Color(0.741176, 0.741176, 0.741176, 1)
+metallic = 0.93
+roughness = 0.54
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj201"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.254902)
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecwnv"]
+albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e3sg"]
+albedo_color = Color(1, 0.501961, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.501961, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7uhc"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53j6x"]
+albedo_color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcvtu"]
+metallic = 1.0
+roughness = 0.0
+
+[node name="moodybody" instance=ExtResource("1_d4a87")]
+
+[node name="WheelLR" parent="." index="0"]
+visible = false
+
+[node name="WheelRR" parent="." index="1"]
+visible = false
+
+[node name="WheelLF" parent="." index="2"]
+visible = false
+
+[node name="WheelRF" parent="." index="3"]
+visible = false
+
+[node name="EquinoxBody" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dloeo")
+surface_material_override/1 = SubResource("StandardMaterial3D_ydua1")
+surface_material_override/2 = SubResource("StandardMaterial3D_36u68")
+surface_material_override/3 = SubResource("StandardMaterial3D_ln7wh")
+surface_material_override/4 = SubResource("StandardMaterial3D_nclwq")
+surface_material_override/5 = SubResource("StandardMaterial3D_4ynij")
+surface_material_override/6 = SubResource("StandardMaterial3D_ysxf3")
+surface_material_override/7 = SubResource("StandardMaterial3D_fj201")
+surface_material_override/8 = SubResource("StandardMaterial3D_ecwnv")
+surface_material_override/9 = SubResource("StandardMaterial3D_1e3sg")
+surface_material_override/10 = SubResource("StandardMaterial3D_g7uhc")
+surface_material_override/11 = SubResource("StandardMaterial3D_53j6x")
+surface_material_override/12 = SubResource("StandardMaterial3D_gcvtu")

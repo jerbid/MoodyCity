@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cklyv3tfoq8xw"]
+
+[ext_resource type="PackedScene" uid="uid://bcx41l64n5b10" path="res://player_car/scenes/moodybody.tscn" id="1_boqgi"]
+[ext_resource type="PackedScene" uid="uid://dn2m7mr36g823" path="res://player_car/scenes/moodyRwheel.tscn" id="2_l518c"]
+[ext_resource type="PackedScene" uid="uid://dcvx4nr2dm23t" path="res://player_car/scenes/moodyLwheel.tscn" id="3_qr6m4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pvqvl"]
+radius = 0.748195
+height = 3.22755
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmd6x"]
+radius = 0.423848
+height = 1.65538
+
+[node name="Moody" type="VehicleBody3D"]
+
+[node name="moodybody" parent="." instance=ExtResource("1_boqgi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.93575e-08, -0.262124, 0.141253)
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 8.83816e-08, 0.663627, 0.81641)
+shape = SubResource("CapsuleShape3D_pvqvl")
+
+[node name="FrontCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -1.17739e-07, 0.413673, -1.54134)
+shape = SubResource("CapsuleShape3D_wmd6x")
+
+[node name="WheelFrontR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.744623, 0.185208, -1.41767)
+wheel_radius = 0.374
+
+[node name="equinoxrRFwheel" parent="WheelFrontR" instance=ExtResource("2_l518c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
+
+[node name="WheelFrontL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.769767, 0.184901, -1.4177)
+wheel_radius = 0.374
+
+[node name="equinoxrLFwheel" parent="WheelFrontL" instance=ExtResource("3_qr6m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
+
+[node name="WheelRearR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770053, 0.184901, 1.56605)
+wheel_radius = 0.374
+
+[node name="equinoxrRFwheel" parent="WheelRearR" instance=ExtResource("2_l518c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
+
+[node name="WheelRearL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77, 0.184901, 1.566)
+wheel_radius = 0.374
+
+[node name="equinoxrLFwheel" parent="WheelRearL" instance=ExtResource("3_qr6m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
