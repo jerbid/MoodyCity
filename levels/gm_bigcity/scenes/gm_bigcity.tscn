@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://k4ubtiu1kd2u"]
+[gd_scene load_steps=3 format=3 uid="uid://k4ubtiu1kd2u"]
+
+[ext_resource type="PackedScene" uid="uid://c8k5y7vskew2v" path="res://levels/gm_bigcity/assets/bigcitymain00.glb" id="1_k1062"]
+[ext_resource type="PackedScene" uid="uid://0ovuy5unf00t" path="res://levels/gm_bigcity/assets/bigcitymain01.glb" id="2_0xsxi"]
 
 [node name="gm_bigcity" type="Node3D"]
+
+[node name="bigcitymain00" parent="." instance=ExtResource("1_k1062")]
+
+[node name="bigcitymain01" parent="." instance=ExtResource("2_0xsxi")]
