@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://gaqa2ub6jau6"]
+
+[ext_resource type="FontFile" uid="uid://dvpx0glkfvhv2" path="res://grandnational.otf" id="1_q75g0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkk20"]
+bg_color = Color(0.631373, 0.631373, 0.631373, 1)
+
+[sub_resource type="Gradient" id="Gradient_82ob2"]
+colors = PackedColorArray(0.866667, 0.458824, 0, 1, 1, 0.85098, 0, 0.670588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ka27s"]
+gradient = SubResource("Gradient_82ob2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5y8h"]
+texture = SubResource("GradientTexture2D_ka27s")
+
+[resource]
+default_font = ExtResource("1_q75g0")
+default_font_size = 30
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+ProgressBar/styles/background = SubResource("StyleBoxFlat_fkk20")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_m5y8h")
+VBoxContainer/constants/separation = 20
