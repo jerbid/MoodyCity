@@ -10,3 +10,6 @@ CREDITS:
 	Licensed for noncommercial purposes
 	
 	gm_bigcity map by BigWig on Steam
+	
+	Cone, lightpole and coolant models made by Ender Xero
+	https://www.youtube.com/@enderxero1509
