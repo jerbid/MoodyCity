@@ -209,7 +209,7 @@ text = "Main Menu"
 [node name="Levels" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "View the level selection menu"
+tooltip_text = "Currently non-functional"
 text = "Level Selection"
 
 [node name="Quit" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
