@@ -22,6 +22,9 @@ extends VehicleBody3D
 @onready var coolant_timer := $CoolantTimer
 @onready var temp_timer := $TempTimer
 
+# The coolant detector area
+@onready var coolant_area := $CoolantDetector
+
 # Coolant variables
 var jugs_left : int = 20
 var coolant_left := 100
@@ -40,6 +43,8 @@ func _ready():
 	coolant_timer.timeout.connect(_on_coolant_Timer_timeout)
 	temp_timer.timeout.connect(on_Temp_Timer_timeout)
 	time_start = Time.get_ticks_msec()
+	# Connect coolant detector's area_entered signal
+	coolant_area.area_entered.connect(_on_Coolant_Area_area_entered)
 
 func _physics_process(delta: float) -> void:
 	set_springarm_pos()
@@ -70,7 +75,8 @@ func _physics_process(delta: float) -> void:
 		reverse_lights.visible = false
 	
 	# Debug text
-	label.text = "engine force: " + str(engine_force) + "\n forward_velocity " + str((linear_velocity * global_transform.basis).z) + "\n brake force " + str(brake)
+	label.text = ("engine force: " + str(engine_force) + "\n forward_velocity " + 
+	str((linear_velocity * global_transform.basis).z) + "\n brake force " + str(brake))
 
 func _process(_delta) -> void:
 	# Gets the time for the time label
@@ -84,20 +90,35 @@ func _process(_delta) -> void:
 	# Set the values for the temperature and amount of jugs left labels
 	temp_label.text = "Temp: " + str(temp) + " C"
 	jugs_label.text = "Coolant jugs left: " + str(jugs_left)
+	
+	if position.y < -20:
+		position = Vector3.ZERO
+		print("lol imagine falling off the map, couldn't be me")
+	
+	# Ensures the temperature never goes below 0 and percentage of coolant left never reaches above 100%
+	if temp < 0:
+		temp = 0
+	if coolant_left > 100:
+		coolant_left = 100
 
 func _unhandled_input(event):
 	# Toggles headlights
 	if event.is_action_pressed("headlights"):
 		toggle_headlights()
+		# Toggles pause menu
 	elif event.is_action_pressed("ui_cancel"):
 		toggle_pause_menu()
+		# Emergency jump for when you get stuck
+	elif event.is_action_pressed("debug_fly"):
+		apply_impulse(Vector3(0, 999, 0), Vector3(0, 0, 15))
 
 # Logic for toggling headlights on and off
 func toggle_headlights() -> void:
 	headlights.visible = not headlights.visible
 	
 func set_springarm_pos() -> void:
-	# Set the spring arm's location to that of the car's. Rotation is handled by the spring arm's script
+	# Set the spring arm's location to that of the car's plus a slight rise to prevent floor clipping. 
+	# Rotation is handled by the spring arm's script
 	springarm.position = position
 	springarm.position.y = position.y + .5
 
@@ -107,19 +128,21 @@ func toggle_pause_menu() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		game_ui.visible = false
 		coolant_timer.stop()
+		temp_timer.stop()
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		game_ui.visible = true
 		coolant_timer.start()
+		temp_timer.start()
 
 func _on_coolant_Timer_timeout() -> void:
 	coolant_left -= 1
 	coolant_bar.value = coolant_left
 
 func on_Temp_Timer_timeout() -> void:
-	if coolant_left > 99:
+	if coolant_left > 97:
 		pass
-	elif coolant_left < 99 and coolant_left > 66:
+	elif coolant_left <= 97 and coolant_left > 66:
 		temp += 1
 	elif coolant_left < 66 and coolant_left > 33:
 		temp += 2
@@ -127,3 +150,28 @@ func on_Temp_Timer_timeout() -> void:
 		temp += 3
 	else:
 		temp += 5
+
+func _on_Coolant_Area_area_entered(_body: Area3D) -> void:
+	temp -= 60
+	if temp < 70:
+		temp = 0
+	elif temp < 0:
+		temp = 0
+	
+	coolant_left += 50
+
+# --------------------------------------------------------------------------------------------------------------
+# Pause menu functions
+# --------------------------------------------------------------------------------------------------------------
+func _on_resume_pressed():
+	# Since the pause menu is open when this button is visible, it will always close the menu. Theoretically.
+	toggle_pause_menu()
+
+func _on_main_menu_pressed():
+	# Changes scene to main menu. Currently the main menu does not work lol.
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+# ---------------------------------------------------------------------------------------------------------------

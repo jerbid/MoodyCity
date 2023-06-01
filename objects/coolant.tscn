@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://vnedejrmrh0n"]
+
+[ext_resource type="PackedScene" uid="uid://dcrnnds2tjjbu" path="res://objects/MOOOD_COOL.glb" id="1_drxp0"]
+[ext_resource type="Script" path="res://objects/coolant.gd" id="2_3oya4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0kh8"]
+size = Vector3(2.32616, 4.12236, 4.10703)
+
+[node name="MOOOD_COOL" instance=ExtResource("1_drxp0")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("2_3oya4")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89806, 0)
+shape = SubResource("BoxShape3D_j0kh8")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.01118, -0.674713)
+light_color = Color(1, 1, 0, 1)
+light_energy = 15.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

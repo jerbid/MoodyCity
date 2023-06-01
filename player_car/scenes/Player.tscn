@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cklyv3tfoq8xw"]
+[gd_scene load_steps=10 format=3 uid="uid://cklyv3tfoq8xw"]
 
 [ext_resource type="PackedScene" uid="uid://bcx41l64n5b10" path="res://player_car/scenes/moodybody.tscn" id="1_boqgi"]
 [ext_resource type="Script" path="res://player_car/scenes/Player.gd" id="1_cywx2"]
@@ -14,6 +14,9 @@ height = 3.22755
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmd6x"]
 radius = 0.423848
 height = 1.65538
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f32pe"]
+size = Vector3(1.93583, 1.72962, 4.85784)
 
 [node name="Moody" type="VehicleBody3D"]
 process_mode = 1
@@ -101,17 +104,23 @@ script = ExtResource("5_stdcx")
 
 [node name="HeadlightL" type="SpotLight3D" parent="Lights/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584082, 0.44931, -2.34151)
+light_energy = 15.0
 spot_range = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Headlights/HeadlightL"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0572392, 0.00352919, 0.208887)
+light_energy = 2.0
+omni_range = 1.0
 
 [node name="HeadlightR" type="SpotLight3D" parent="Lights/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 0.963106, 0.269122, 0, -0.269122, 0.963106, 0.556231, 0.450087, -2.29685)
+light_energy = 15.0
 spot_range = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Headlights/HeadlightR"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00715262, -0.0124534, 0.193204)
+light_energy = 2.0
+omni_range = 1.0
 
 [node name="TaillightL" type="OmniLight3D" parent="Lights/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.760032, 0.746211, 2.30202)
@@ -160,6 +169,7 @@ theme_override_font_sizes/font_size = 30
 text = "600"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -255,3 +265,15 @@ autostart = true
 
 [node name="TempTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="CoolantDetector" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoolantDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674171, 0.0166464)
+shape = SubResource("BoxShape3D_f32pe")
+
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

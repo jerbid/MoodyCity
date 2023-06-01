@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjilv17e4pqd7"]
+[gd_scene load_steps=7 format=3 uid="uid://bjilv17e4pqd7"]
 
 [ext_resource type="PackedScene" uid="uid://k4ubtiu1kd2u" path="res://levels/gm_bigcity/scenes/gm_bigcity.tscn" id="1_ksy8i"]
 [ext_resource type="PackedScene" uid="uid://cklyv3tfoq8xw" path="res://player_car/scenes/Player.tscn" id="2_ps4n8"]
+[ext_resource type="PackedScene" uid="uid://vnedejrmrh0n" path="res://objects/coolant.tscn" id="3_6vuhn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fb7gb"]
 sky_top_color = Color(0.270588, 0.454902, 0.682353, 1)
@@ -26,3 +27,6 @@ shadow_enabled = true
 
 [node name="Moody" parent="." instance=ExtResource("2_ps4n8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.679, 0, -137.623)
+
+[node name="MOOOD_COOL" parent="." instance=ExtResource("3_6vuhn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -166.417, 0, -143.132)
