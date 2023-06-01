@@ -29,4 +29,4 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.679, 0, -137.623)
 
 [node name="MOOOD_COOL" parent="." instance=ExtResource("3_6vuhn")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -166.417, 0, -143.132)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -164.139, 0.00714874, -142.618)

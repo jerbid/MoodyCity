@@ -1,7 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://vnedejrmrh0n"]
+[gd_scene load_steps=7 format=3 uid="uid://vnedejrmrh0n"]
 
 [ext_resource type="PackedScene" uid="uid://dcrnnds2tjjbu" path="res://objects/MOOOD_COOL.glb" id="1_drxp0"]
 [ext_resource type="Script" path="res://objects/coolant.gd" id="2_3oya4"]
+
+[sub_resource type="Animation" id="Animation_5mifw"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector3(0.00185262, -0.00691408, 0), Vector3(0.00185262, -1.79377, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0.0180245, -0.261799), Vector3(0, 3.14159, -0.261799), Vector3(0, 6.28319, -0.261799)]
+}
+
+[sub_resource type="Animation" id="Animation_62xse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00185262, -0.00691408, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0180245, -0.261799)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4dgq"]
+_data = {
+"RESET": SubResource("Animation_62xse"),
+"idle": SubResource("Animation_5mifw")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j0kh8"]
 size = Vector3(2.32616, 4.12236, 4.10703)
@@ -10,17 +72,27 @@ size = Vector3(2.32616, 4.12236, 4.10703)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("2_3oya4")
 
-[node name="Area3D" type="Area3D" parent="." index="1"]
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.965769, 0.258777, 0.0180235, -0.258819, 0.965925, 0, -0.0174094, -0.00466483, 0.999837, 0.00185262, -0.00691408, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cube" index="0"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_y4dgq")
+}
+
+[node name="Area3D" type="Area3D" parent="Cube" index="1"]
+transform = Transform3D(0.951459, -0.258819, -0.166551, 0.254943, 0.965926, -0.0446271, 0.172426, 2.91039e-09, 0.985023, -0.026541, 0.0920014, -0.00031944)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89806, 0)
 shape = SubResource("BoxShape3D_j0kh8")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.01118, -0.674713)
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(3.93849, 2.8939, 1.05531, -1.2941, 3.86954e-07, 4.82963, 2.79529, -4.07742, 0.748996, 0, 6.56526, 0)
 light_color = Color(1, 1, 0, 1)
 light_energy = 15.0
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Cube/Area3D" to="." method="_on_area_3d_area_entered"]
