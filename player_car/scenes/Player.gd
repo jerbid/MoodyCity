@@ -251,17 +251,17 @@ func on_Temp_Timer_timeout() -> void:
 	if temp >= 200:
 		show_lose()
 
-func _on_Coolant_Area_area_entered(_body: Area3D) -> void:
-	temp -= 60
-	
-	if temp < 70:
-		temp = 0
-	elif temp < 0:
-		temp = 0
-	
-	coolant_left += 50
-	jugs_left -= 1
-	
+func _on_Coolant_Area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("regular_coolant"):
+		if temp < 70:
+			temp = 0
+		else:
+			temp -= 60
+		
+		coolant_left += 50
+		jugs_left -= 1
+		
+		print("regular_coolant gathered, jugs left minus 1 and temp is lowered to " + str(temp))
 	if jugs_left == 0:
 		show_win()
 
