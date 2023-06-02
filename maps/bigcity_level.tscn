@@ -28,5 +28,7 @@ shadow_enabled = true
 [node name="Moody" parent="." instance=ExtResource("2_ps4n8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.679, 0, -137.623)
 
-[node name="MOOOD_COOL" parent="." instance=ExtResource("3_6vuhn")]
+[node name="CoolantContainer" type="Node3D" parent="."]
+
+[node name="MOOOD_COOL" parent="CoolantContainer" instance=ExtResource("3_6vuhn")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -164.139, 0.00714874, -142.618)

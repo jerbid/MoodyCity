@@ -19,7 +19,7 @@ height = 1.65538
 size = Vector3(1.93583, 1.72962, 4.85784)
 
 [node name="Moody" type="VehicleBody3D"]
-process_mode = 1
+process_mode = 3
 collision_layer = 2
 collision_mask = 5
 input_ray_pickable = false
@@ -29,17 +29,21 @@ center_of_mass = Vector3(0, 0.01, 0)
 script = ExtResource("1_cywx2")
 
 [node name="moodybody" parent="." instance=ExtResource("1_boqgi")]
+process_mode = 1
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.93575e-08, -0.262124, 0.141253)
 
 [node name="BodyCollision" type="CollisionShape3D" parent="."]
+process_mode = 1
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 8.83816e-08, 0.663627, 0.81641)
 shape = SubResource("CapsuleShape3D_pvqvl")
 
 [node name="FrontCollision" type="CollisionShape3D" parent="."]
+process_mode = 1
 transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, -1.17739e-07, 0.413673, -1.54134)
 shape = SubResource("CapsuleShape3D_wmd6x")
 
 [node name="WheelFrontR" type="VehicleWheel3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.744623, 0.185208, -1.41767)
 use_as_traction = true
 use_as_steering = true
@@ -54,6 +58,7 @@ damping_relaxation = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
 
 [node name="WheelFrontL" type="VehicleWheel3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.769767, 0.184901, -1.4177)
 use_as_traction = true
 use_as_steering = true
@@ -68,6 +73,7 @@ damping_relaxation = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
 
 [node name="WheelRearR" type="VehicleWheel3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770053, 0.184901, 1.56605)
 wheel_radius = 0.374
 wheel_friction_slip = 3.3
@@ -80,6 +86,7 @@ damping_relaxation = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
 
 [node name="WheelRearL" type="VehicleWheel3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77, 0.184901, 1.566)
 wheel_radius = 0.374
 wheel_friction_slip = 3.3
@@ -95,46 +102,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
 top_level = true
 spring_length = 7.0
 script = ExtResource("5_stdcx")
+mouse_sensitivity = null
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 
 [node name="Lights" type="Node3D" parent="."]
+process_mode = 1
 
 [node name="Headlights" type="Node3D" parent="Lights"]
+process_mode = 1
 
 [node name="HeadlightL" type="SpotLight3D" parent="Lights/Headlights"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584082, 0.44931, -2.34151)
 light_energy = 15.0
 spot_range = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Headlights/HeadlightL"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0572392, 0.00352919, 0.208887)
 light_energy = 2.0
 omni_range = 1.0
 
 [node name="HeadlightR" type="SpotLight3D" parent="Lights/Headlights"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.963106, 0.269122, 0, -0.269122, 0.963106, 0.556231, 0.450087, -2.29685)
 light_energy = 15.0
 spot_range = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights/Headlights/HeadlightR"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00715262, -0.0124534, 0.193204)
 light_energy = 2.0
 omni_range = 1.0
 
 [node name="TaillightL" type="OmniLight3D" parent="Lights/Headlights"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.760032, 0.746211, 2.30202)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.5
 omni_range = 1.0
 
 [node name="TaillightR" type="OmniLight3D" parent="Lights/Headlights"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769512, 0.746211, 2.30202)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.5
 omni_range = 1.0
 
 [node name="ReverseLights" type="Node3D" parent="Lights"]
+process_mode = 1
 
 [node name="ReverseLightL" type="OmniLight3D" parent="Lights/ReverseLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.760032, 0.556, 2.30202)
@@ -147,6 +164,7 @@ light_energy = 0.5
 omni_range = 1.0
 
 [node name="Brakelights" type="Node3D" parent="Lights"]
+process_mode = 1
 
 [node name="BrakelightL" type="OmniLight3D" parent="Lights/Brakelights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.760032, 0.746211, 2.30202)
@@ -163,6 +181,7 @@ omni_range = 1.0
 process_mode = 3
 
 [node name="debug_info" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 558.0
 offset_bottom = 241.0
 theme_override_font_sizes/font_size = 30
@@ -170,7 +189,6 @@ text = "600"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -199,6 +217,12 @@ layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Exit the pause menu and continue playing"
 text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Start from scratch"
+text = "Restart"
 
 [node name="MainMenu" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
 layout_mode = 2
@@ -260,13 +284,85 @@ text = "Coolant left:"
 layout_mode = 2
 value = 100.0
 
+[node name="WinOrLose" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_inbsy")
+
+[node name="WinGreen" type="ColorRect" parent="CanvasLayer/WinOrLose"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.721569, 0, 0.294118)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WinOrLose/WinGreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "You got them all!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitGame" type="Button" parent="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="LoseRed" type="ColorRect" parent="CanvasLayer/WinOrLose"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.294118)
+
 [node name="CoolantTimer" type="Timer" parent="."]
+process_mode = 1
 autostart = true
 
 [node name="TempTimer" type="Timer" parent="."]
+process_mode = 1
+autostart = true
+
+[node name="TimeTimer" type="Timer" parent="."]
+process_mode = 1
 autostart = true
 
 [node name="CoolantDetector" type="Area3D" parent="."]
+process_mode = 1
 collision_layer = 2
 collision_mask = 4
 
@@ -275,5 +371,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674171, 0.0166464)
 shape = SubResource("BoxShape3D_f32pe")
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
