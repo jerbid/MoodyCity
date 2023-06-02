@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 		reverse_lights.visible = false
 	
 	# Logic for activating brake lights for the reverse key
-	if Input.is_action_pressed("reverse") and forward_velocity < 0.3 or Input.is_action_pressed("accelerate") and forward_velocity > 0.3 or Input.is_action_pressed("handbrake"):
+	if Input.is_action_pressed("reverse") and forward_velocity < 0.4 or Input.is_action_pressed("accelerate") and forward_velocity > 0.4 or Input.is_action_pressed("handbrake"):
 		brake_lights.visible = true
 	else:
 		brake_lights.visible = false
@@ -95,8 +95,8 @@ func _physics_process(delta: float) -> void:
 		brake = 0
 	
 	# Debug text
-	label.text = ("engine force: " + str(engine_force) + "\n forward_velocity " + 
-	str((linear_velocity * global_transform.basis).z) + "\n brake force " + str(brake))
+	label.text = (" engine force: " + str(engine_force) + "\n forward_velocity " + 
+	str((linear_velocity * global_transform.basis).z) + "\n brake force " + str(brake)) + "\n fps: " + str(Performance.get_monitor(Performance.TIME_FPS))
 
 # ------------------------- End of physics process -------------------------------------------------------------
 

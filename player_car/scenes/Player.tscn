@@ -49,10 +49,10 @@ use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.374
 wheel_friction_slip = 4.0
-suspension_travel = 0.2
-suspension_stiffness = 100.0
-damping_compression = 2.0
-damping_relaxation = 2.5
+suspension_travel = 0.15
+suspension_stiffness = 65.0
+damping_compression = 1.4
+damping_relaxation = 1.6
 
 [node name="equinoxrRFwheel" parent="WheelFrontR" instance=ExtResource("2_l518c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
@@ -64,10 +64,10 @@ use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.374
 wheel_friction_slip = 4.0
-suspension_travel = 0.2
-suspension_stiffness = 100.0
-damping_compression = 2.0
-damping_relaxation = 2.5
+suspension_travel = 0.15
+suspension_stiffness = 65.0
+damping_compression = 1.4
+damping_relaxation = 1.6
 
 [node name="equinoxrLFwheel" parent="WheelFrontL" instance=ExtResource("3_qr6m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
@@ -77,10 +77,10 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770053, 0.184901, 1.56605)
 wheel_radius = 0.374
 wheel_friction_slip = 3.3
-suspension_travel = 0.2
-suspension_stiffness = 100.0
-damping_compression = 2.0
-damping_relaxation = 2.5
+suspension_travel = 0.15
+suspension_stiffness = 65.0
+damping_compression = 1.4
+damping_relaxation = 1.6
 
 [node name="equinoxrRFwheel" parent="WheelRearR" instance=ExtResource("2_l518c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
@@ -90,10 +90,10 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77, 0.184901, 1.566)
 wheel_radius = 0.374
 wheel_friction_slip = 3.3
-suspension_travel = 0.2
-suspension_stiffness = 100.0
-damping_compression = 2.0
-damping_relaxation = 2.5
+suspension_travel = 0.15
+suspension_stiffness = 65.0
+damping_compression = 1.4
+damping_relaxation = 1.6
 
 [node name="equinoxrLFwheel" parent="WheelRearL" instance=ExtResource("3_qr6m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366037, -0.00212455)
@@ -188,6 +188,7 @@ text = "600"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,6 +349,40 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0.294118)
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WinOrLose/LoseRed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Oh no! The engine overheated!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Try Again"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitGame" type="Button" parent="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ragequit"
+
 [node name="CoolantTimer" type="Timer" parent="."]
 process_mode = 1
 autostart = true
@@ -376,3 +411,6 @@ shape = SubResource("BoxShape3D_f32pe")
 [connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/WinOrLose/WinGreen/MarginContainer/VBoxContainer/HBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinOrLose/LoseRed/MarginContainer/VBoxContainer/HBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
