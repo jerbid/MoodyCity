@@ -73,26 +73,26 @@ func _physics_process(delta: float) -> void:
 	# Set engine force to the axis between the forward and reverse controls, then multiplied by a force multiplier
 	set_engine_force(Input.get_axis("accelerate", "reverse") * 7500)
 	
-	# Set brake force and turnbrake lights on when handbrake is pressed
-	if Input.is_action_just_pressed("handbrake"):
-		brake = 125
-		brake_lights.visible = true
-	elif Input.is_action_just_released("handbrake"):
-		brake = 0
-		brake_lights.visible = false
-	
-	# Logic for activating the reverse/brake lights for the reverse key
+	# Logic for activating the reverse lights for the reverse key
 	var forward_velocity := (linear_velocity * global_transform.basis).z
 	if forward_velocity > 0.3:
 		reverse_lights.visible = true
 	elif forward_velocity < 0.3 and Input.is_action_pressed("reverse"):
-		brake_lights.visible = true
-		reverse_lights.visible = false
-	elif Input.is_action_pressed("accelerate") and forward_velocity < 0.3:
-		brake_lights.visible = false
 		reverse_lights.visible = false
 	else:
 		reverse_lights.visible = false
+	
+	# Logic for activating brake lights for the reverse key
+	if Input.is_action_pressed("reverse") and forward_velocity < 0.3 or Input.is_action_pressed("accelerate") and forward_velocity > 0.3 or Input.is_action_pressed("handbrake"):
+		brake_lights.visible = true
+	else:
+		brake_lights.visible = false
+	
+	# Set brake force and turnbrake lights on when handbrake is pressed
+	if Input.is_action_just_pressed("handbrake"):
+		brake = 125
+	elif Input.is_action_just_released("handbrake"):
+		brake = 0
 	
 	# Debug text
 	label.text = ("engine force: " + str(engine_force) + "\n forward_velocity " + 
@@ -231,6 +231,7 @@ func show_lose() -> void:
 # --------------------------------------------------------------------------------------------------------------
 # Signals
 # --------------------------------------------------------------------------------------------------------------
+
 func _on_coolant_Timer_timeout() -> void:
 	coolant_left -= 1
 	coolant_bar.value = coolant_left
