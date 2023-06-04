@@ -27,18 +27,22 @@ CREDITS:
 
 --------------------------------------------------
 
-How to add a new level:
+How to add a new level in build:
 	1. Create a new 3D scene and import/create map model
 	2. Add Player.tscn from res://player_car/scenes/
 	3. Add 20 or more coolant.tscn from res://objects/ (will be dynamically adjusted in the future)
-	4. [IMPORTANT] Save scene in res://maps/ folder
+	4. [IMPORTANT] Save scene in the maps/ folder in the game build's folder
 	5. You're done! The main menu will detect the new level in the /maps folder and add it to the level screen.
 
 Build instructions:
 	1. Clone or download this repository
-	2. Open in Godot 4.x (This is developed in 4.0.3 on Linux Mint 21)
-	3. Edit SAVE_PATH in res://stats_resource to use "user://" instead of "res://"
-	4. Export project, this currently has no defined export properties
+	2. Open in Godot 4.0.3 
+	3. Edit save path in the following places to use "user://" instead of "res://":
+		res://stats_resource.gd (const SAVE_PATH)
+		res://main_menu.gd (load() functions)
+		res://Player.gd (@export var save_stats)
+	4. In the export window, go to Resources, in the dropdown select "Export all resources except for selected below" and check maps/
+	5. Export game
 
 Known issues:
 	Headlight spotlights don't always work. This should be fixed when I add occlusion culling here soon

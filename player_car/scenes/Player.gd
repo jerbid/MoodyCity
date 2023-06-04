@@ -1,6 +1,6 @@
 extends VehicleBody3D
 
-@export var save_stats := preload("res://moody_city_save.tres")
+@export var save_stats : MoodyCitySaveStats = preload("res://moody_city_save.tres")
 
 @export var mouse_sensitivity := 0.05
 
@@ -304,25 +304,31 @@ func _on_Time_Timer_timeout() -> void:
 func _on_resume_pressed():
 	# Since the pause menu is open when this button is visible, it will always close the menu. Theoretically.
 	toggle_pause_menu()
+	print("pressed resume")
 	
 func _on_restart_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	print("pressed restart")
 	
 func _on_main_menu_pressed():
 	# Unpauses and changes scene to main menu. Currently the main menu does not work lol.
 	get_tree().paused = false
+	print("going to main menu")
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_quit_pressed():
+	print("quitting game. see ya later")
 	get_tree().quit()
 
 # Win and Lose UI functions
 func _on_play_again_pressed():
 	get_tree().paused = false
+	print("playing again")
 	get_tree().reload_current_scene()
 
 func _on_quit_game_pressed():
+	print("quitting game. see ya later")
 	get_tree().quit()
 
 # -----------------------------  End of signals ----------------------------------------------------------------

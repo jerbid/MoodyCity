@@ -51,7 +51,7 @@ func _on_back_pressed():
 	title.visible = true
 
 func _on_play_game_pressed():
-	get_tree().change_scene_to_file("res://maps/bigcity_level.tscn")
+	get_tree().change_scene_to_file("res://maps/" + maps[0])
 
 func _on_quit_game_pressed():
 	get_tree().quit()
@@ -61,19 +61,23 @@ func _on_levels_pressed():
 	levels.visible = true
 
 func _on_level_button_pressed(button):
-	get_tree().change_scene_to_file("res://maps/" + button.text)
+	get_tree().change_scene_to_file("res://maps/" + button.text.right(-3) + ".tscn")
+	#get_tree().change_scene_to_file(map_dir + button.text.right(-3) + ".tscn")
 
 func get_maps() -> Array:
 	var map_array : Array
+	# ---------- Uncomment below for editor testing
 	var map_dir := DirAccess.get_files_at("res://maps")
+	
 	for file in map_dir:
 		if file.get_extension() == "tscn":
 			map_array.append(file)
 	
 	maps_size = map_array.size()
 	if maps_size == 0:
-		map_array.append("Something went wrong loading levels! None detected.")
+		map_array.append("Something went wrong loading levels! None detected.-----")
 		print("No levels detected what the frick???")
+		print(str(map_dir))
 	
 	return map_array
 
@@ -81,7 +85,8 @@ func add_level_buttons() -> void:
 	for level in maps:
 		var button = Button.new()
 		levels_container.add_child(button)
-		button.text = str(map_index + 1) + ". " + maps[map_index]
+		var button_text = str(map_index + 1) + ". " + maps[map_index]
+		button.text = button_text.left(-5)
 		button.pressed.connect(_on_level_button_pressed.bind(button))
 		
 		map_index += 1

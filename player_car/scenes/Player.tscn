@@ -181,6 +181,7 @@ omni_range = 1.0
 process_mode = 3
 
 [node name="debug_info" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 558.0
 offset_bottom = 241.0
 theme_override_font_sizes/font_size = 30
@@ -229,12 +230,6 @@ layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Return to the main menu at game launch"
 text = "Main Menu"
-
-[node name="Levels" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-tooltip_text = "Currently non-functional"
-text = "Level Selection"
 
 [node name="Quit" type="Button" parent="CanvasLayer/PauseMenu/MainButtons/VBoxContainer"]
 layout_mode = 2
