@@ -20,6 +20,8 @@ CREDITS:
 	Grass texture (Forest Ground 01) by Rob Tuytel
 	Bridge wood texture (Wood Planks Dirt) by Rob Tuytel
 	
+	RadioactivePoet for helping fix the in-game timer
+	
 	Code by me, Jerbid
 	
 
@@ -29,11 +31,14 @@ How to add a new level:
 	1. Create a new 3D scene and import/create map model
 	2. Add Player.tscn from res://player_car/scenes/
 	3. Add 20 or more coolant.tscn from res://objects/ (will be dynamically adjusted in the future)
-	4. Save scene in res://maps/ folder
-	5. You're done! Everything else is handled by the existing code.
+	4. [IMPORTANT] Save scene in res://maps/ folder
+	5. You're done! The main menu will detect the new level in the /maps folder and add it to the level screen.
 
 Build instructions:
 	1. Clone or download this repository
 	2. Open in Godot 4.x (This is developed in 4.0.3 on Linux Mint 21)
 	3. Edit SAVE_PATH in res://stats_resource to use "user://" instead of "res://"
 	4. Export project, this currently has no defined export properties
+
+Known issues:
+	Headlight spotlights don't always work. This should be fixed when I add occlusion culling here soon

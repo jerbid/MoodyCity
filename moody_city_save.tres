@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_blxws")
-lowest_time = 6
-total_coolant_collected = 2
-highest_living_temp = 4
-losses = 2
-wins = 1
+lowest_time = 9999999999
+total_coolant_collected = 0
+highest_living_temp = 0
+losses = 0
+wins = 0
