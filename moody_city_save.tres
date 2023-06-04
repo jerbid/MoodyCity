@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MoodyCitySaveStats" load_steps=2 format=3 uid="uid://bn7owwgv72uk5"]
+
+[ext_resource type="Script" path="res://stats_resource.gd" id="1_blxws"]
+
+[resource]
+script = ExtResource("1_blxws")
+lowest_time = 6
+total_coolant_collected = 1
+highest_living_temp = 4
+losses = 1
+wins = 1

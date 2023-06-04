@@ -1,3 +1,176 @@
-[gd_scene format=3 uid="uid://gmt42tv77p22"]
+[gd_scene load_steps=9 format=3 uid="uid://gmt42tv77p22"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_62p4d"]
+[ext_resource type="Texture2D" uid="uid://b0s31njhckl3q" path="res://levels/main_menu/kloppenheim_02_4k.exr" id="2_kjikd"]
+[ext_resource type="PackedScene" uid="uid://jpb43ddd5b7a" path="res://levels/main_menu/terrainbridge.tscn" id="2_o7c3r"]
+[ext_resource type="PackedScene" uid="uid://dijm0bf7jg2tf" path="res://levels/main_menu/moodyprop.tscn" id="3_qcgqr"]
+[ext_resource type="Theme" uid="uid://gaqa2ub6jau6" path="res://ui_theme.tres" id="4_lf623"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_27qh7"]
+panorama = ExtResource("2_kjikd")
+
+[sub_resource type="Sky" id="Sky_lk6lu"]
+sky_material = SubResource("PanoramaSkyMaterial_27qh7")
+
+[sub_resource type="Environment" id="Environment_7gaya"]
+background_mode = 2
+sky = SubResource("Sky_lk6lu")
 
 [node name="main_menu" type="Node3D"]
+script = ExtResource("1_62p4d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7gaya")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.618504, 0.369302, -0.693591, 0, 0.882677, 0.46998, 0.785781, -0.290685, 0.54594, 51.4858, 11.9352, -6.01874)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="terrainbridge" parent="." instance=ExtResource("2_o7c3r")]
+
+[node name="moodyprop" parent="." instance=ExtResource("3_qcgqr")]
+transform = Transform3D(-0.940094, 0, 0.745804, 0, 1.2, 0, -0.745804, 0, -0.940094, 52.4173, 9.13091, -9.92667)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_lf623")
+
+[node name="Title" type="Label" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 123.0
+offset_right = 576.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "MOODY CITY"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 159.0
+offset_right = 340.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlayGame" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play Game"
+
+[node name="Stats" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Stats"
+
+[node name="Levels" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Levels"
+
+[node name="QuitGame" type="Button" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit Game"
+
+[node name="Stats" type="Control" parent="CanvasLayer/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/Stats/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Stats" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="LowestTime" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quickest Game Complete: 0m 0s"
+
+[node name="CoolantCollected" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Total Coolant Jugs collected: 0"
+
+[node name="LivingTemp" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Highest living temp: 0 C"
+
+[node name="Losses" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Losses: 0"
+
+[node name="Wins" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Wins: 0"
+
+[node name="Back" type="Button" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go Back"
+
+[node name="Levels" type="Control" parent="CanvasLayer/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/Levels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/Levels/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="LevelsContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/Levels/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="CanvasLayer/MainMenu/Levels/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/Levels/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

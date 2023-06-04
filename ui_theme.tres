@@ -17,6 +17,9 @@ texture = SubResource("GradientTexture2D_ka27s")
 [resource]
 default_font = ExtResource("1_q75g0")
 default_font_size = 30
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.462745)
+Label/constants/outline_size = 5
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20

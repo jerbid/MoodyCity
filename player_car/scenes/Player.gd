@@ -1,5 +1,7 @@
 extends VehicleBody3D
 
+@export var save_stats := preload("res://moody_city_save.tres")
+
 @export var mouse_sensitivity := 0.05
 
 # The camera's spring arm
@@ -37,6 +39,7 @@ var coolant_left := 100
 var time_start : int
 var elapsed_time : int
 var temp : int
+var win_temp : int
 
 # Time variable
 var seconds = 0
@@ -199,6 +202,14 @@ func toggle_pause_menu() -> void:
 		temp_timer.start()
 
 func show_win() -> void:
+	# Announce win to console and save to stats
+	print("you won lol imagine")
+	save_stats.wins += 1
+	if elapsed_time < save_stats.lowest_time:
+		save_stats.lowest_time = elapsed_time
+	if win_temp > save_stats.highest_living_temp:
+		save_stats.highest_living_temp = win_temp
+	save_stats.save()
 	# Frees the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Stop timers
@@ -213,6 +224,10 @@ func show_win() -> void:
 	get_tree().paused = true
 
 func show_lose() -> void:
+	# Announce loss in console and save to stats
+	print("you lost lol imagine")
+	save_stats.losses += 1
+	save_stats.save()
 	# Frees the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# Stop timers
@@ -225,6 +240,11 @@ func show_lose() -> void:
 	lose_screen.visible = true
 	# Pause the game when lose is shown
 	get_tree().paused = true
+
+func get_time_as_string() -> String:
+	var time_as_string := str(minutes) + "m " + str(seconds) + "s"
+	return time_as_string
+	
 
 # ----------------------------------- End of general game functions --------------------------------------------
 
@@ -253,13 +273,19 @@ func on_Temp_Timer_timeout() -> void:
 
 func _on_Coolant_Area_area_entered(area: Area3D) -> void:
 	if area.is_in_group("regular_coolant"):
+		coolant_left += 50
+		jugs_left -= 1
+		
+		if jugs_left == 0:
+			win_temp = temp
+		
 		if temp < 70:
 			temp = 0
 		else:
 			temp -= 60
-		
-		coolant_left += 50
-		jugs_left -= 1
+			
+		save_stats.total_coolant_collected += 1
+		save_stats.save()
 		
 		print("regular_coolant gathered, jugs left minus 1 and temp is lowered to " + str(temp))
 	if jugs_left == 0:
@@ -280,10 +306,12 @@ func _on_resume_pressed():
 	toggle_pause_menu()
 	
 func _on_restart_pressed():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 	
 func _on_main_menu_pressed():
-	# Changes scene to main menu. Currently the main menu does not work lol.
+	# Unpauses and changes scene to main menu. Currently the main menu does not work lol.
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_quit_pressed():

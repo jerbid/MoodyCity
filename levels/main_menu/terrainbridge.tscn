@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=3 uid="uid://jpb43ddd5b7a"]
+
+[ext_resource type="PackedScene" uid="uid://cqxojuohm22yq" path="res://levels/main_menu/terrainbridge.glb" id="1_2i4e7"]
+[ext_resource type="Texture2D" uid="uid://dykj7mbnm1ukj" path="res://levels/main_menu/forrest_ground_01_diff_4k.jpg" id="2_ggeoa"]
+[ext_resource type="Texture2D" uid="uid://ju6i1nqv346s" path="res://levels/main_menu/forrest_ground_01_nor_gl_4k.png" id="3_u0xoe"]
+[ext_resource type="Texture2D" uid="uid://dc2awfi6xlo4a" path="res://levels/main_menu/forrest_ground_01_rough_4k.jpg" id="4_eai5r"]
+[ext_resource type="Texture2D" uid="uid://cj4y3onefqxih" path="res://levels/main_menu/wood_planks_dirt_diff_4k.jpg" id="5_0wiqy"]
+[ext_resource type="Texture2D" uid="uid://bb2irlh8pjg3w" path="res://levels/main_menu/wood_planks_dirt_nor_gl_4k.jpg" id="6_2dco1"]
+[ext_resource type="Texture2D" uid="uid://bmiie74tthe77" path="res://levels/main_menu/wood_planks_dirt_rough_4k.jpg" id="7_sq263"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pp4fv"]
+albedo_texture = ExtResource("2_ggeoa")
+roughness_texture = ExtResource("4_eai5r")
+normal_enabled = true
+normal_texture = ExtResource("3_u0xoe")
+uv1_scale = Vector3(15, 15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lul7y"]
+albedo_texture = ExtResource("5_0wiqy")
+roughness_texture = ExtResource("7_sq263")
+normal_enabled = true
+normal_texture = ExtResource("6_2dco1")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o4f3u"]
+top_radius = 4000.0
+bottom_radius = 4000.0
+height = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohvqa"]
+transparency = 1
+albedo_color = Color(0.431373, 0.670588, 1, 0.898039)
+
+[node name="terrainbridge" instance=ExtResource("1_2i4e7")]
+
+[node name="terrain" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pp4fv")
+
+[node name="bridge" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lul7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("CylinderMesh_o4f3u")
+surface_material_override/0 = SubResource("StandardMaterial3D_ohvqa")
