@@ -1,5 +1,25 @@
 extends VehicleBody3D
 
+# ------------------------------
+# The Player Script
+# ------------------------------
+#
+# This script handles everything from the UI, stats saving, and most of the gameplay
+# (movement, detecting coolant, light toggles)
+#
+# Each section of functions (game processes like _process(), general functions, signals, etc)
+# are separated in boxes and should have comments throughout the big functions.
+#
+# Movement is handled in _physics_process(), UI is mostly in the signals section, win/lose functions
+# are defined in general gameplay, and conditions for detecting coolant and saving stats are in signals.
+#
+# Sections in order:
+#	1. Game start functions
+#	2. General game functions
+#	3. Signals
+#
+# ------------------------------
+
 @export var save_stats : MoodyCitySaveStats = preload("res://moody_city_save.tres")
 
 @export var mouse_sensitivity := 0.05
@@ -45,9 +65,6 @@ var win_temp : int
 var seconds = 0
 var minutes = elapsed_time / 60
 
-# --------------------------------------------------------------------------------------------------------------
-# Game start functions
-# --------------------------------------------------------------------------------------------------------------
 
 func _ready():
 	# On ready, all lights turn off

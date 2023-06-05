@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cklyv3tfoq8xw"]
+[gd_scene load_steps=15 format=3 uid="uid://cklyv3tfoq8xw"]
 
 [ext_resource type="PackedScene" uid="uid://bcx41l64n5b10" path="res://player_car/scenes/moodybody.tscn" id="1_boqgi"]
 [ext_resource type="Script" path="res://player_car/scenes/Player.gd" id="1_cywx2"]
@@ -17,6 +17,21 @@ height = 1.65538
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f32pe"]
 size = Vector3(1.93583, 1.72962, 4.85784)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ke6h"]
+size = Vector2(1.294, 3.822)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kw3x0"]
+albedo_color = Color(0.145098, 0.145098, 0.145098, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w5bp0"]
+size = Vector2(1.1, 0.225)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wribu"]
+size = Vector2(0.242, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8in2j"]
+size = Vector2(1.06, 0.189)
 
 [node name="Moody" type="VehicleBody3D"]
 process_mode = 3
@@ -114,7 +129,7 @@ process_mode = 1
 
 [node name="HeadlightL" type="SpotLight3D" parent="Lights/Headlights"]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584082, 0.44931, -2.34151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584, 0.449, -2.297)
 light_energy = 15.0
 spot_range = 50.0
 
@@ -398,6 +413,33 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CoolantDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674171, 0.0166464)
 shape = SubResource("BoxShape3D_f32pe")
+
+[node name="Underbody" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underbody"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.000616074, 0.0873346)
+mesh = SubResource("PlaneMesh_4ke6h")
+surface_material_override/0 = SubResource("StandardMaterial3D_kw3x0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Underbody"]
+transform = Transform3D(1, 0, 0, 0, -0.885702, 0.464255, 0, -0.464255, -0.885702, 0, 0.0459837, -1.9248)
+mesh = SubResource("PlaneMesh_w5bp0")
+surface_material_override/0 = SubResource("StandardMaterial3D_kw3x0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Underbody"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.574953, 0, 0.109169)
+mesh = SubResource("PlaneMesh_wribu")
+surface_material_override/0 = SubResource("StandardMaterial3D_kw3x0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Underbody"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.567677, 0, 0.109169)
+mesh = SubResource("PlaneMesh_wribu")
+surface_material_override/0 = SubResource("StandardMaterial3D_kw3x0")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Underbody"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 2.06692)
+mesh = SubResource("PlaneMesh_8in2j")
+surface_material_override/0 = SubResource("StandardMaterial3D_kw3x0")
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MainButtons/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

@@ -1,6 +1,16 @@
 class_name MoodyCitySaveStats
 extends Resource
 
+# ------------------------------
+# The Save Stats resource script
+# ------------------------------
+# 
+# This script defines what is saved in the save stats and 
+# provides a path + save function.
+#
+# ------------------------------
+
+# The path where save data is saved.
 const SAVE_PATH := "res://moody_city_save.tres"
 
 # Stores lowest time as integer, lowest_time_as_string() converts it into displayable text

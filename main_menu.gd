@@ -18,7 +18,19 @@ var maps : Array
 var map_index : int
 var maps_size : int
 
+# --------------------------
+# Main Menu Script
+#---------------------------
+# This script handles all of the logic for the main menu.
+# Dynamic level loading from res://maps/ is handled here in the get_maps() and
+# the add_level_buttons() functions.
+# Statistics are also displayed here, loaded on the _on_stats_pressed() signal
+#---------------------------
+
 func _ready():
+	# If there's no save data found, create a new one in the same path.
+	# Otherwise, it just loads the existing one.
+	# res:// should be changed to user:// if building.
 	if load("res://moody_city_save.tres") == null:
 		save_stats = MoodyCitySaveStats.new()
 		save_stats.resource_path = save_stats.SAVE_PATH
@@ -26,8 +38,10 @@ func _ready():
 	else:
 		save_stats = load("res://moody_city_save.tres")
 	
+	# Loads the levels on start and prints what it finds to the console.
 	maps = get_maps()
 	print("levels detected: " + str(maps_size) + "\nfiles: " + str(maps))
+	# Adds buttons to the levels menu with the maps loaded above.
 	add_level_buttons()
 
 func _on_stats_pressed():
@@ -39,6 +53,8 @@ func _on_stats_pressed():
 		lowest_time.text = "Fastest win: You haven't won yet!"
 	else:
 		lowest_time.text = "Fastest win: " + save_stats.get_lowest_time_as_string()
+	
+	# Changes the text in the stats menu to the values found in the save stats file.
 	coolant_collected.text = "Total coolant jugs collected: " + str(save_stats.total_coolant_collected)
 	living_temp.text = "Highest living temp: " + str(save_stats.highest_living_temp)
 	losses.text = "Losses: " + str(save_stats.losses)
@@ -61,12 +77,15 @@ func _on_levels_pressed():
 	levels.visible = true
 
 func _on_level_button_pressed(button):
+	# Changes the scene to the file with the below path plus the button's text, 
+	# minus the number and plus the .tscn file extension. 
+	
+	# For example, bigcity_level.tscn is converted to 1. bigcity_level on the
+	# button in the levels menu, and it becomes bigcity_level.tscn again.
 	get_tree().change_scene_to_file("res://maps/" + button.text.right(-3) + ".tscn")
-	#get_tree().change_scene_to_file(map_dir + button.text.right(-3) + ".tscn")
 
 func get_maps() -> Array:
 	var map_array : Array
-	# ---------- Uncomment below for editor testing
 	var map_dir := DirAccess.get_files_at("res://maps")
 	
 	for file in map_dir:
@@ -83,10 +102,15 @@ func get_maps() -> Array:
 
 func add_level_buttons() -> void:
 	for level in maps:
+		# Create a new button in memory
 		var button = Button.new()
+		# Adds button to the levels_container node
 		levels_container.add_child(button)
+		# Takes the file's name and adds a number to the front of it according to the order
 		var button_text = str(map_index + 1) + ". " + maps[map_index]
+		# Strips the .tscn from the map's filename to put on the button for a cleaner look
 		button.text = button_text.left(-5)
+		# Connects the button's "pressed" signal to the script, attaching the button's data with it
 		button.pressed.connect(_on_level_button_pressed.bind(button))
 		
 		map_index += 1
