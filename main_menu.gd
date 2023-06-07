@@ -67,7 +67,7 @@ func _on_stats_pressed():
 	main_buttons.visible = false
 	stats.visible = true
 	
-	if save_stats.lowest_time == 9999999999:
+	if save_stats.lowest_time == 99999999:
 		lowest_time.text = "Fastest win: You haven't won yet!"
 	else:
 		lowest_time.text = "Fastest win: " + save_stats.get_lowest_time_as_string()

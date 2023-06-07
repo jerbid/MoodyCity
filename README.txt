@@ -27,12 +27,14 @@ CREDITS:
 
 --------------------------------------------------
 
-How to add a new level in build:
+How to add a new level in the project:
 	1. Create a new 3D scene and import/create map model
 	2. Add Player.tscn from res://player_car/scenes/ (This handles the car, UI, and gameplay all-in-one)
 	3. Add 20 or more coolant.tscn from res://objects/ (coolant count will be dynamic in the future)
 	4. [IMPORTANT] Save scene in the res://maps/ folder
 	5. You're done! The main menu will detect the new level in the /maps folder and add it to the level screen.
+	Note: The name in the levels screen will be determined based on the file name. ".tscn" will be removed, 
+	but the rest will remain.
 	
 	Dynamic level loading is currently only supported when done inside the project in the editor. External level
 	loading is planned for the future.
