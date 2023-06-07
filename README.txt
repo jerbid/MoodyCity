@@ -36,8 +36,8 @@ How to add a new level in the project:
 	Note: The name in the levels screen will be determined based on the file name. ".tscn" will be removed, 
 	but the rest will remain.
 	
-	Dynamic level loading is currently only supported when done inside the project in the editor. External level
-	loading is planned for the future.
+	Dynamic level loading is currently only supported when done inside the project in the editor. 
+	External level loading is planned for the future.
 
 Build instructions:
 	1. Clone or download this repository
@@ -49,6 +49,6 @@ Build instructions:
 	4. Export game with default settings (or change some yourself, your choice)
 
 Known issues:
-	Headlight spotlights don't always work. This most likely is a problem with too many spotlights being present in the 
-	game at once which should get fixed with occlusion culling which will be added in the near future (this will
-	not be dynamic)
+	Headlight spotlights don't always work. This most likely is a problem with 
+	too many spotlights being present in the game at once which should get fixed 
+	with occlusion culling which will be added in the near future (this willnot be dynamic)
