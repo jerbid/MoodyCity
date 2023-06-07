@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://k4ubtiu1kd2u" path="res://levels/gm_bigcity/scenes/gm_bigcity.tscn" id="1_ksy8i"]
 [ext_resource type="PackedScene" uid="uid://cklyv3tfoq8xw" path="res://player_car/scenes/Player.tscn" id="2_ps4n8"]
-[ext_resource type="PackedScene" uid="uid://vnedejrmrh0n" path="res://objects/coolant.tscn" id="3_6vuhn"]
+[ext_resource type="PackedScene" uid="uid://vnedejrmrh0n" path="res://coolant/coolant.tscn" id="3_6vuhn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fb7gb"]
 sky_top_color = Color(0.270588, 0.454902, 0.682353, 1)

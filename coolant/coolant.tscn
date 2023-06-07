@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://vnedejrmrh0n"]
 
-[ext_resource type="PackedScene" uid="uid://dcrnnds2tjjbu" path="res://objects/MOOOD_COOL.glb" id="1_drxp0"]
-[ext_resource type="Script" path="res://objects/coolant.gd" id="2_3oya4"]
+[ext_resource type="PackedScene" uid="uid://dcrnnds2tjjbu" path="res://coolant/MOOOD_COOL.glb" id="1_drxp0"]
+[ext_resource type="Script" path="res://coolant/coolant.gd" id="2_3oya4"]
 
 [sub_resource type="Animation" id="Animation_62xse"]
 length = 0.001

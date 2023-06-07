@@ -11,11 +11,13 @@ extends Resource
 # ------------------------------
 
 # The path where save data is saved.
-const SAVE_PATH := "res://moody_city_save.tres"
+const SAVE_PATH := "user://moody_city_save.tres"
 
+# The time the file was created
+@export var time_created : String
 # Stores lowest time as integer, lowest_time_as_string() converts it into displayable text
 # It starts as 10 nines just to help the Player.gd code work better
-@export var lowest_time : int = 9999999999
+@export var lowest_time : int = 99999999
 # Stores total amount of coolant collected over all time
 @export var total_coolant_collected : int
 # Stores highest temp attained before collecting coolant

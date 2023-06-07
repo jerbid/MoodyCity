@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://gaqa2ub6jau6"]
 
-[ext_resource type="FontFile" uid="uid://dvpx0glkfvhv2" path="res://grandnational.otf" id="1_q75g0"]
+[ext_resource type="FontFile" uid="uid://dvpx0glkfvhv2" path="res://player_car/grandnational.otf" id="1_q75g0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkk20"]
 bg_color = Color(0.631373, 0.631373, 0.631373, 1)

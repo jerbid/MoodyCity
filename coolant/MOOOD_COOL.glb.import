@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dcrnnds2tjjbu"
-path="res://.godot/imported/MOOOD_COOL.glb-3e2357773b4ca77911d1ffdfeff45482.scn"
+path="res://.godot/imported/MOOOD_COOL.glb-fa80c2d4e6eb8d2c1172fadb1fb81d2c.scn"
 
 [deps]
 
-source_file="res://objects/MOOOD_COOL.glb"
-dest_files=["res://.godot/imported/MOOOD_COOL.glb-3e2357773b4ca77911d1ffdfeff45482.scn"]
+source_file="res://coolant/MOOOD_COOL.glb"
+dest_files=["res://.godot/imported/MOOOD_COOL.glb-fa80c2d4e6eb8d2c1172fadb1fb81d2c.scn"]
 
 [params]
 

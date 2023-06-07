@@ -20,7 +20,7 @@ extends VehicleBody3D
 #
 # ------------------------------
 
-@export var save_stats : MoodyCitySaveStats = preload("res://moody_city_save.tres")
+@export var save_stats : MoodyCitySaveStats
 
 @export var mouse_sensitivity := 0.05
 
@@ -67,6 +67,17 @@ var minutes = elapsed_time / 60
 
 
 func _ready():
+	# If there's no save data found, create a new one in the same path.
+	# Otherwise, it just loads the existing one.
+	# res:// should be changed to user:// if building.
+	# NOTE: This code also exists in the main menu script, this is because
+	# the main menu scene does not have a Player.tscn
+	if load("user://moody_city_save.tres") == null:
+		save_stats = MoodyCitySaveStats.new()
+		save_stats.resource_path = save_stats.SAVE_PATH
+		save_stats.save()
+	else:
+		save_stats = load("user://moody_city_save.tres")
 	# On ready, all lights turn off
 	headlights.visible = false
 	reverse_lights.visible = false

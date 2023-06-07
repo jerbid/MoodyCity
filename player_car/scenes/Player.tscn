@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2m7mr36g823" path="res://player_car/scenes/moodyRwheel.tscn" id="2_l518c"]
 [ext_resource type="PackedScene" uid="uid://dcvx4nr2dm23t" path="res://player_car/scenes/moodyLwheel.tscn" id="3_qr6m4"]
 [ext_resource type="Script" path="res://player_car/scenes/SpringArm3D.gd" id="5_stdcx"]
-[ext_resource type="Theme" uid="uid://gaqa2ub6jau6" path="res://ui_theme.tres" id="6_inbsy"]
+[ext_resource type="Theme" uid="uid://gaqa2ub6jau6" path="res://player_car/ui_theme.tres" id="6_xvfa5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pvqvl"]
 radius = 0.748195
@@ -211,7 +211,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_inbsy")
+theme = ExtResource("6_xvfa5")
 
 [node name="MainButtons" type="MarginContainer" parent="CanvasLayer/PauseMenu"]
 layout_mode = 1
@@ -260,7 +260,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("6_inbsy")
+theme = ExtResource("6_xvfa5")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI"]
 layout_mode = 1
@@ -303,7 +303,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_inbsy")
+theme = ExtResource("6_xvfa5")
 
 [node name="WinGreen" type="ColorRect" parent="CanvasLayer/WinOrLose"]
 visible = false

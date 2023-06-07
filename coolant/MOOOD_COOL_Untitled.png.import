@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgt311hfu8e8y"
-path.s3tc="res://.godot/imported/MOOOD_COOL_Untitled.png-98668447b9d1fc93462efbd7e8c5719f.s3tc.ctex"
+path.s3tc="res://.godot/imported/MOOOD_COOL_Untitled.png-e608a80c4a5f9eb194af19bfa3b1e4d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://objects/MOOOD_COOL_Untitled.png"
-dest_files=["res://.godot/imported/MOOOD_COOL_Untitled.png-98668447b9d1fc93462efbd7e8c5719f.s3tc.ctex"]
+source_file="res://coolant/MOOOD_COOL_Untitled.png"
+dest_files=["res://.godot/imported/MOOOD_COOL_Untitled.png-e608a80c4a5f9eb194af19bfa3b1e4d0.s3tc.ctex"]
 
 [params]
 

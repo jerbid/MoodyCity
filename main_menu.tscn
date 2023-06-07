@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0s31njhckl3q" path="res://levels/main_menu/kloppenheim_02_4k.exr" id="2_kjikd"]
 [ext_resource type="PackedScene" uid="uid://jpb43ddd5b7a" path="res://levels/main_menu/terrainbridge.tscn" id="2_o7c3r"]
 [ext_resource type="PackedScene" uid="uid://dijm0bf7jg2tf" path="res://levels/main_menu/moodyprop.tscn" id="3_qcgqr"]
-[ext_resource type="Theme" uid="uid://gaqa2ub6jau6" path="res://ui_theme.tres" id="4_lf623"]
+[ext_resource type="Theme" uid="uid://gaqa2ub6jau6" path="res://player_car/ui_theme.tres" id="5_irfaq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_27qh7"]
 panorama = ExtResource("2_kjikd")
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_lf623")
+theme = ExtResource("5_irfaq")
 
 [node name="Title" type="Label" parent="CanvasLayer/MainMenu"]
 layout_mode = 1
@@ -135,6 +135,9 @@ text = "Losses: 0"
 [node name="Wins" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Wins: 0"
+
+[node name="TimeCreated" type="Label" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="Back" type="Button" parent="CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2

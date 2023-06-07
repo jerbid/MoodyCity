@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dvpx0glkfvhv2"
-path="res://.godot/imported/grandnational.otf-bf42b5fae70a28d845fc9bcfcba050c8.fontdata"
+path="res://.godot/imported/grandnational.otf-94f3d8d5c309517d8db89d9c7a13609e.fontdata"
 
 [deps]
 
-source_file="res://grandnational.otf"
-dest_files=["res://.godot/imported/grandnational.otf-bf42b5fae70a28d845fc9bcfcba050c8.fontdata"]
+source_file="res://player_car/grandnational.otf"
+dest_files=["res://.godot/imported/grandnational.otf-94f3d8d5c309517d8db89d9c7a13609e.fontdata"]
 
 [params]
 
