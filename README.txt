@@ -14,7 +14,7 @@ CREDITS:
 	Cone, lightpole and coolant models made by Ender Xero
 	https://www.youtube.com/@enderxero1509
 	
-	Main menu skybox and textures taken from Polyhaven:
+	Main menu skybox and textures taken from Polyhaven (License CC0):
 		https://polyhaven.com
 	Skybox (Kloppenheim 02) by Greg Zaal
 	Grass texture (Forest Ground 01) by Rob Tuytel
