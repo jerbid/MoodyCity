@@ -90,7 +90,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89806, 0)
 shape = SubResource("BoxShape3D_j0kh8")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
 transform = Transform3D(3.93849, 2.8939, 1.05531, -1.2941, 3.86954e-07, 4.82963, 2.79529, -4.07742, 0.748996, 0, 6.56526, 0)
 light_color = Color(1, 1, 0, 1)
 light_energy = 15.0
