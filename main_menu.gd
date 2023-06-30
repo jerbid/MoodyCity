@@ -12,13 +12,14 @@ extends Node3D
 @onready var losses = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/Losses
 @onready var wins = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/Wins
 @onready var time_created = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/TimeCreated
+@onready var map_files := DirAccess.get_files_at("maps/")
 
 var save_stats : MoodyCitySaveStats
 var maps : Array
 var map_index : int
 var maps_size : int
 
-var ext_map_path := "user://maps/"
+var ext_map_path := "user://mod_maps/"
 var ext_map_array : Array
 var ext_map_index : int
 
@@ -43,14 +44,6 @@ func _ready():
 		save_stats.time_created = Time.get_datetime_string_from_system()
 	else:
 		save_stats = load("user://moody_city_save.tres")
-	# Loads the internal levels on start and prints what it finds to the console.
-	maps = get_maps()
-	print("internal levels found: " + str(maps_size) + "\nfiles: " + str(maps))
-	# Adds buttons to the levels menu with the maps loaded above.
-	add_level_buttons()
-	
-	var ext_maps : Array = get_ext_maps()
-	add_ext_buttons()
 
 func _on_stats_pressed():
 	title.visible = false
@@ -87,6 +80,16 @@ func _on_quit_game_pressed():
 
 
 func _on_levels_pressed():
+	# Loads the internal levels and prints what it finds to the console.
+	maps = get_maps()
+	print("internal levels found: " + str(maps_size) + "\nfiles: " + str(maps))
+	# Adds buttons to the levels menu with the maps loaded above.
+	add_level_buttons()
+	
+	# Loads mod maps and adds buttons for each one
+	var ext_maps : Array = get_ext_maps()
+	add_ext_buttons()
+	
 	main_buttons.visible = false
 	levels.visible = true
 
@@ -97,18 +100,17 @@ func _on_level_button_pressed(button):
 	
 	# For example, bigcity_level.tscn is converted to 1. bigcity_level on the
 	# button in the levels menu, and it becomes bigcity_level.tscn again.
-	get_tree().change_scene_to_file("res://maps/" + button.text.right(-3) + ".tscn")
+	get_tree().change_scene_to_file("res://maps/" + button.text + ".tscn")
 
 func _on_ext_level_pressed(button):
-	get_tree().change_scene_to_file("res://maps/" + button.text + ".tscn")
+	get_tree().change_scene_to_file("res://mod_maps/" + button.text + ".tscn")
 
 # -------------------------- General functions ---------------------------------------
 
 func get_maps() -> Array:
 	var map_array : Array
-	var map_dir := DirAccess.get_files_at("res://maps")
 	
-	for file in map_dir:
+	for file in map_files:
 		if file.get_extension() == "tscn":
 			map_array.append(file)
 	
@@ -116,7 +118,7 @@ func get_maps() -> Array:
 	if maps_size == 0:
 		map_array.append("Something went wrong loading levels! None detected.-----")
 		print("No levels detected what the frick???")
-		print(str(map_dir))
+		print(str(map_files))
 	
 	return map_array
 
@@ -141,7 +143,7 @@ func add_level_buttons() -> void:
 		# Adds button to the levels_container node
 		levels_container.add_child(button)
 		# Takes the file's name and adds a number to the front of it according to the order
-		var button_text = str(map_index + 1) + ". " + maps[map_index]
+		var button_text = str(maps[map_index])
 		# Strips the .tscn from the map's filename to put on the button for a cleaner look
 		button.text = button_text.left(-5)
 		# Connects the button's "pressed" signal to the script, attaching the button's data with it
