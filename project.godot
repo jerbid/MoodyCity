@@ -13,6 +13,7 @@ config_version=5
 config/name="MoodyCity"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+boot_splash/bg_color=Color(0.388235, 0.388235, 0.388235, 1)
 config/icon="res://icon.svg"
 
 [dotnet]

@@ -18,6 +18,10 @@ var maps : Array
 var map_index : int
 var maps_size : int
 
+var ext_map_path := "user://maps/"
+var ext_map_array : Array
+var ext_map_index : int
+
 # --------------------------
 # Main Menu Script
 #---------------------------
@@ -45,6 +49,8 @@ func _ready():
 	# Adds buttons to the levels menu with the maps loaded above.
 	add_level_buttons()
 	
+	var ext_maps : Array = get_ext_maps()
+	add_ext_buttons()
 
 func _on_stats_pressed():
 	title.visible = false
@@ -93,6 +99,9 @@ func _on_level_button_pressed(button):
 	# button in the levels menu, and it becomes bigcity_level.tscn again.
 	get_tree().change_scene_to_file("res://maps/" + button.text.right(-3) + ".tscn")
 
+func _on_ext_level_pressed(button):
+	get_tree().change_scene_to_file("res://maps/" + button.text + ".tscn")
+
 # -------------------------- General functions ---------------------------------------
 
 func get_maps() -> Array:
@@ -111,6 +120,18 @@ func get_maps() -> Array:
 	
 	return map_array
 
+func get_ext_maps() -> Array:
+	var ext_maps = DirAccess.get_files_at(ext_map_path)
+	
+	for file in ext_maps:
+		ext_map_array.append(file)
+	
+	print("mod levels detected: " + str(ext_map_array.size()))
+	print(str(ext_map_array))
+	if ext_map_array.size() == 0:
+		print("no mod maps detected")
+	
+	return ext_map_array
 
 func add_level_buttons() -> void:
 	map_index = 0
@@ -125,5 +146,17 @@ func add_level_buttons() -> void:
 		button.text = button_text.left(-5)
 		# Connects the button's "pressed" signal to the script, attaching the button's data with it
 		button.pressed.connect(_on_level_button_pressed.bind(button))
+		
+		map_index += 1
+
+func add_ext_buttons() -> void:
+	map_index = 0
+	for file in ext_map_array:
+		ProjectSettings.load_resource_pack(ext_map_path + file)
+		var button = Button.new()
+		levels_container.add_child(button)
+		var button_text = str(ext_map_array[map_index])
+		button.text = button_text.left(-4)
+		button.pressed.connect(_on_ext_level_pressed.bind(button))
 		
 		map_index += 1
