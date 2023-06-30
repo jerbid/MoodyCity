@@ -17,9 +17,6 @@ var save_stats : MoodyCitySaveStats
 var maps : Array
 var map_index : int
 var maps_size : int
-#var ext_map_path := OS.get_executable_path().get_base_dir().path_join("maps/")
-#var ext_maps : Array
-#var ext_maps_size: int
 
 # --------------------------
 # Main Menu Script
@@ -48,19 +45,6 @@ func _ready():
 	# Adds buttons to the levels menu with the maps loaded above.
 	add_level_buttons()
 	
-	# Below contains commented code for external level loading. Disabled
-	# Due to it being nonfunctional right now
-	
-	# Checks if there's a maps/ folder in the user:// directory. If not, creates it.
-#	if DirAccess.dir_exists_absolute(ext_map_path) == false:
-#		DirAccess.make_dir_absolute(ext_map_path)
-	
-	# Finds levels in the external maps/ folder and adds them to the levels button.
-	# Currently in development.
-	#ext_maps = get_ext_maps()
-	#print("external levels found: \n" + str(ext_maps))
-	#add_ext_levels()
-	
 
 func _on_stats_pressed():
 	title.visible = false
@@ -77,7 +61,7 @@ func _on_stats_pressed():
 	living_temp.text = "Highest living temp: " + str(save_stats.highest_living_temp)
 	losses.text = "Losses: " + str(save_stats.losses)
 	wins.text = "Wins: " + str(save_stats.wins)
-	time_created.text = "Save created on: " + str(save_stats.time_created)
+	time_created.text = "Save created on: " + save_stats.time_created
 	
 	
 func _on_back_pressed():
@@ -108,10 +92,6 @@ func _on_level_button_pressed(button):
 	# For example, bigcity_level.tscn is converted to 1. bigcity_level on the
 	# button in the levels menu, and it becomes bigcity_level.tscn again.
 	get_tree().change_scene_to_file("res://maps/" + button.text.right(-3) + ".tscn")
-
-#func _on_ext_level_button_pressed(button):
-	#var level_file = button.text.right(-3) + ".tscn"
-	#get_tree().change_scene_to_file(ext_map_path + level_file)
 
 # -------------------------- General functions ---------------------------------------
 
@@ -147,31 +127,3 @@ func add_level_buttons() -> void:
 		button.pressed.connect(_on_level_button_pressed.bind(button))
 		
 		map_index += 1
-
-# Below is some code for attempting to make external level loading possible. 
-# Currently in development.
-
-#func get_ext_maps() -> Array:
-#	var map_array : Array
-#	ext_maps = DirAccess.get_files_at(ext_map_path)
-#
-#	for file in ext_maps:
-#		if file.get_extension() == "tscn":
-#			map_array.append(file)
-#
-#	ext_maps_size = map_array.size()
-#
-#	if map_array.size() == 0:
-#		print("no external maps detected")
-#
-#	return map_array
-
-
-#func add_ext_levels() -> void:
-#	map_index = 0
-#	for level in ext_maps:
-#		var button = Button.new()
-#		levels_container.add_child(button)
-#		var button_text = str(map_index + 1) + ". " + ext_maps[map_index]
-#		button.text = button_text.left(-5)
-#		button.pressed.connect(_on_ext_level_button_pressed.bind(button))
