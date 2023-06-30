@@ -19,7 +19,7 @@ var maps : Array
 var map_index : int
 var maps_size : int
 
-var ext_map_path := "user://mod_maps/"
+var ext_map_path : String = "user://mod_maps/"
 var ext_map_array : Array
 var ext_map_index : int
 
