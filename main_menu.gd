@@ -44,6 +44,11 @@ func _ready():
 		save_stats.time_created = Time.get_datetime_string_from_system()
 	else:
 		save_stats = load("user://moody_city_save.tres")
+	
+	if DirAccess.dir_exists_absolute("user://mod_maps/"):
+		pass
+	else:
+		DirAccess.make_dir_absolute("user://mod_maps/")
 
 func _on_stats_pressed():
 	title.visible = false
