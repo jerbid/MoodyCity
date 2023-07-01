@@ -76,7 +76,7 @@ func _on_back_pressed():
 
 
 func _on_play_game_pressed():
-	get_tree().change_scene_to_file("res://maps/" + maps[0])
+	get_tree().change_scene_to_file("res://maps/bigcity_level.tscn")
 
 
 func _on_quit_game_pressed():
