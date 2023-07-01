@@ -80,6 +80,7 @@ func _on_quit_game_pressed():
 
 
 func _on_levels_pressed():
+	remove_old_buttons()
 	# Loads the internal levels and prints what it finds to the console.
 	maps = get_maps()
 	print("internal levels found: " + str(maps_size) + "\nfiles: " + str(maps))
@@ -162,3 +163,8 @@ func add_ext_buttons() -> void:
 		button.pressed.connect(_on_ext_level_pressed.bind(button))
 		
 		map_index += 1
+
+func remove_old_buttons() -> void:
+	for button in levels_container.get_children():
+		levels_container.remove_child(button)
+		button.queue_free()
