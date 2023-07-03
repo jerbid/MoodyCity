@@ -12,8 +12,9 @@ extends Node3D
 @onready var losses = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/Losses
 @onready var wins = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/Wins
 @onready var time_created = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/TimeCreated
-@onready var map_files := DirAccess.get_files_at("maps/")
 
+var map_dir := OS.get_executable_path().get_base_dir().path_join("maps/")
+var map_files := DirAccess.get_files_at("maps/")
 var save_stats : MoodyCitySaveStats
 var maps : Array
 var map_index : int
@@ -33,6 +34,7 @@ var ext_map_index : int
 #---------------------------
 
 func _ready():
+	print(map_dir)
 	# If there's no save data found, create a new one in the same path.
 	# Otherwise, it just loads the existing one.
 	if FileAccess.file_exists("user://moody_city_save.tres") == false:
@@ -40,15 +42,19 @@ func _ready():
 		save_stats.resource_path = save_stats.SAVE_PATH
 		save_stats.save()
 		print("no save data found, creating new")
+		if FileAccess.file_exists("user://moody_city_save.tres") == false:
+			print("something went wrong creating the save, no data will be saved")
 		# Saves the current date and time to the save file
 		save_stats.time_created = Time.get_datetime_string_from_system()
 	else:
 		save_stats = load("user://moody_city_save.tres")
 	
-	if DirAccess.dir_exists_absolute("user://mod_maps/"):
-		pass
+	if not DirAccess.dir_exists_absolute("user://mod_maps/"):
+		DirAccess.make_dir_absolute("user://mod_maps")
+	elif not DirAccess.dir_exists_absolute(map_dir):
+		DirAccess.make_dir_absolute(map_dir)
 	else:
-		DirAccess.make_dir_absolute("user://mod_maps/")
+		pass
 
 func _on_stats_pressed():
 	title.visible = false
@@ -144,6 +150,7 @@ func get_ext_maps() -> Array:
 func add_level_buttons() -> void:
 	map_index = 0
 	for level in maps:
+		ProjectSettings.load_resource_pack(map_dir + level)
 		# Create a new button in memory
 		var button = Button.new()
 		# Adds button to the levels_container node

@@ -22,6 +22,7 @@ project/assembly_name="MoodyCity"
 
 [editor]
 
+export/convert_text_resources_to_binary=false
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
