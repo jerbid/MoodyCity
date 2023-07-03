@@ -36,6 +36,9 @@ var ext_map_index : int
 func _ready():
 	map_files = DirAccess.get_files_at("maps/")
 	print(str(map_files))
+	for file in map_files:
+		ProjectSettings.load_resource_pack(file)
+	print(str(map_files))
 	print(map_dir)
 	# If there's no save data found, create a new one in the same path.
 	# Otherwise, it just loads the existing one.
