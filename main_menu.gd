@@ -14,7 +14,7 @@ extends Node3D
 @onready var time_created = $CanvasLayer/MainMenu/Stats/MarginContainer/VBoxContainer/TimeCreated
 
 var map_dir := OS.get_executable_path().get_base_dir().path_join("maps/")
-var map_files := DirAccess.get_files_at("maps/")
+var map_files : Array 
 var save_stats : MoodyCitySaveStats
 var maps : Array
 var map_index : int
@@ -34,6 +34,8 @@ var ext_map_index : int
 #---------------------------
 
 func _ready():
+	map_files = DirAccess.get_files_at("maps/")
+	print(str(map_files))
 	print(map_dir)
 	# If there's no save data found, create a new one in the same path.
 	# Otherwise, it just loads the existing one.
@@ -55,6 +57,15 @@ func _ready():
 		DirAccess.make_dir_absolute(map_dir)
 	else:
 		pass
+
+func _unhandled_input(event):
+	if event.is_action_pressed("debug_fly"):
+		ProjectSettings.load_resource_pack(map_dir + "bigcity_level.pck")
+		print(map_dir + "bigcity_level.pck")
+		if FileAccess.file_exists("res://bigcity_level.tscn"):
+			print("bigcity found!")
+		else:
+			print("no bigcity!")
 
 func _on_stats_pressed():
 	title.visible = false
@@ -121,6 +132,8 @@ func _on_ext_level_pressed(button):
 
 func get_maps() -> Array:
 	var map_array : Array
+	for pack in map_dir:
+		ProjectSettings.load_resource_pack(pack)
 	
 	for file in map_files:
 		if file.get_extension() == "tscn":
