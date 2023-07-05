@@ -35,11 +35,8 @@ var ext_map_index : int
 
 func _ready():
 	ProjectSettings.load_resource_pack(map_dir + "bigcity_level.pck")
-	print(str(map_files))
 	for file in map_files:
 		ProjectSettings.load_resource_pack(file)
-	print(str(map_files))
-	print(map_dir)
 	# If there's no save data found, create a new one in the same path.
 	# Otherwise, it just loads the existing one.
 	if FileAccess.file_exists("user://moody_city_save.tres") == false:
@@ -97,6 +94,9 @@ func _on_quit_game_pressed():
 
 func _on_levels_pressed():
 	remove_old_buttons()
+	ext_map_array.clear()
+	
+	print("creating bigcity button")
 	var bigcity_button = Button.new()
 	levels_container.add_child(bigcity_button)
 	bigcity_button.text = "bigcity_level"
@@ -109,7 +109,9 @@ func _on_levels_pressed():
 	
 	# Loads mod maps and adds buttons for each one
 	var ext_maps : Array = get_ext_maps()
+	print("get_ext_maps()")
 	add_ext_buttons()
+	print("adding mod map buttons")
 	
 	main_buttons.visible = false
 	levels.visible = true
