@@ -89,6 +89,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit Game"
 
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "v0.4 alpha"
+
 [node name="Stats" type="Control" parent="CanvasLayer/MainMenu"]
 visible = false
 layout_mode = 1
