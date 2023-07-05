@@ -34,7 +34,7 @@ var ext_map_index : int
 #---------------------------
 
 func _ready():
-	map_files = DirAccess.get_files_at("maps/")
+	ProjectSettings.load_resource_pack(map_dir + "bigcity_level.pck")
 	print(str(map_files))
 	for file in map_files:
 		ProjectSettings.load_resource_pack(file)
@@ -60,15 +60,6 @@ func _ready():
 		DirAccess.make_dir_absolute(map_dir)
 	else:
 		pass
-
-func _unhandled_input(event):
-	if event.is_action_pressed("debug_fly"):
-		ProjectSettings.load_resource_pack(map_dir + "bigcity_level.pck")
-		print(map_dir + "bigcity_level.pck")
-		if FileAccess.file_exists("res://bigcity_level.tscn"):
-			print("bigcity found!")
-		else:
-			print("no bigcity!")
 
 func _on_stats_pressed():
 	title.visible = false
@@ -106,11 +97,15 @@ func _on_quit_game_pressed():
 
 func _on_levels_pressed():
 	remove_old_buttons()
+	var bigcity_button = Button.new()
+	levels_container.add_child(bigcity_button)
+	bigcity_button.text = "bigcity_level"
+	bigcity_button.pressed.connect(_on_button_pressed)
 	# Loads the internal levels and prints what it finds to the console.
 	maps = get_maps()
 	print("internal levels found: " + str(maps_size) + "\nfiles: " + str(maps))
-	# Adds buttons to the levels menu with the maps loaded above.
-	add_level_buttons()
+#	# Adds buttons to the levels menu with the maps loaded above.
+#	add_level_buttons()
 	
 	# Loads mod maps and adds buttons for each one
 	var ext_maps : Array = get_ext_maps()
@@ -134,6 +129,7 @@ func _on_ext_level_pressed(button):
 # -------------------------- General functions ---------------------------------------
 
 func get_maps() -> Array:
+	map_files = DirAccess.get_files_at("maps/")
 	var map_array : Array
 	for pack in map_dir:
 		ProjectSettings.load_resource_pack(pack)
@@ -163,22 +159,22 @@ func get_ext_maps() -> Array:
 	
 	return ext_map_array
 
-func add_level_buttons() -> void:
-	map_index = 0
-	for level in maps:
-		ProjectSettings.load_resource_pack(map_dir + level)
-		# Create a new button in memory
-		var button = Button.new()
-		# Adds button to the levels_container node
-		levels_container.add_child(button)
-		# Takes the file's name and adds a number to the front of it according to the order
-		var button_text = str(maps[map_index])
-		# Strips the .tscn from the map's filename to put on the button for a cleaner look
-		button.text = button_text.left(-5)
-		# Connects the button's "pressed" signal to the script, attaching the button's data with it
-		button.pressed.connect(_on_level_button_pressed.bind(button))
-		
-		map_index += 1
+#func add_level_buttons() -> void:
+#	map_index = 0
+#	for level in maps:
+#		ProjectSettings.load_resource_pack(map_dir + level)
+#		# Create a new button in memory
+#		var button = Button.new()
+#		# Adds button to the levels_container node
+#		levels_container.add_child(button)
+#		# Takes the file's name and adds a number to the front of it according to the order
+#		var button_text = str(maps[map_index])
+#		# Strips the .tscn from the map's filename to put on the button for a cleaner look
+#		button.text = button_text.left(-5)
+#		# Connects the button's "pressed" signal to the script, attaching the button's data with it
+#		button.pressed.connect(_on_level_button_pressed.bind(button))
+#
+#		map_index += 1
 
 func add_ext_buttons() -> void:
 	map_index = 0
@@ -196,3 +192,7 @@ func remove_old_buttons() -> void:
 	for button in levels_container.get_children():
 		levels_container.remove_child(button)
 		button.queue_free()
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://maps/bigcity_level.tscn")

@@ -42,8 +42,10 @@ How to add a new level in the project:
 		(This will be the default in a future release)
 		6. Save the level's .tscn file in the res://maps/ folder to make it
 		load on game start
-		7. You're done! The game will automatically detect the map and make a
-		button for it.
+		7. In the _on_levels_pressed() function in main_menu.gd, copy the 
+		code for creating the bigcity_level button, and modify it for your
+		own level, including creating a new pressed() signal method for the
+		button.
 	
 	For external levels (allows loading levels after compile time):
 		1. Create a new project in Godot 4.0.3 in an empty folder
