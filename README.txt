@@ -22,8 +22,6 @@ CREDITS:
 	
 	RadioactivePoet for helping fix the in-game timer
 	https://www.twitch.tv/radioactivepoet
-	Ender Xero for the coolant (+currently unused lightpole and cone) model
-	https://www.youtube.com/@enderxero1509
 	
 	Code by me, Jerbid
 	
